@@ -47,12 +47,14 @@ public class ProductService {
         return ProductDTO.fromEntity(product); 
     }
 
-    public Product getProductById(Long id) {
-        return productRepository
-            .findById(id)
-            .orElseThrow(
-                () -> new ErrorException("El ID " + id.toString() + " no existe")
-            );
+    public ProductDTO getProductById(Long id) {
+        return ProductDTO.fromEntity(
+            productRepository
+                .findById(id)
+                .orElseThrow(
+                    () -> new ErrorException("El ID " + id.toString() + " no existe")
+                )
+        );
     }
 
     public List<ProductDTO> getAllProducts() {
